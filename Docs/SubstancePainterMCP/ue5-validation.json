@@ -1,0 +1,39 @@
+{
+  "engine": "5.8.4-58902052+++UE5+Release-5.8",
+  "project_name": "Jelly Game",
+  "imports": {},
+  "connections": {
+    "<MaterialProperty.MP_BASE_COLOR: 5>": true,
+    "<MaterialProperty.MP_NORMAL: 10>": true,
+    "<MaterialProperty.MP_AMBIENT_OCCLUSION: 18>": true,
+    "<MaterialProperty.MP_ROUGHNESS: 8>": true,
+    "<MaterialProperty.MP_METALLIC: 6>": true
+  },
+  "textures": {
+    "BC": {
+      "path": "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_BC.T_PainterTest_BC",
+      "srgb": true,
+      "compression": "<TextureCompressionSettings.TC_DEFAULT: 0>"
+    },
+    "N": {
+      "path": "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_N.T_PainterTest_N",
+      "srgb": false,
+      "compression": "<TextureCompressionSettings.TC_NORMALMAP: 1>"
+    },
+    "ORM": {
+      "path": "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_ORM.T_PainterTest_ORM",
+      "srgb": false,
+      "compression": "<TextureCompressionSettings.TC_MASKS: 2>"
+    }
+  },
+  "material": "/Game/JellyGame/Experiments/PainterPipeline/M_PainterTest.M_PainterTest",
+  "mesh": "/Game/JellyGame/Experiments/PainterPipeline/SM_PainterTest.SM_PainterTest",
+  "mesh_material": "/Game/JellyGame/Experiments/PainterPipeline/M_PainterTest.M_PainterTest",
+  "used_textures": [
+    "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_N.T_PainterTest_N",
+    "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_BC.T_PainterTest_BC",
+    "/Game/JellyGame/Experiments/PainterPipeline/T_PainterTest_ORM.T_PainterTest_ORM"
+  ],
+  "level": "/Game/JellyGame/Maps/L_PainterMaterialTest",
+  "success": true
+}

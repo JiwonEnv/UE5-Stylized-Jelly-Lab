@@ -1,0 +1,44 @@
+# Unreal generated files (keep Config, Content, Source and project descriptors)
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+.idea/
+.vscode/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.xcworkspace
+*.xcodeproj
+*.code-workspace
+# Generated plugin outputs; prebuilt third-party plugin binaries may need explicit exceptions
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+Plugins/**/Saved/
+# Local-only files and operating system metadata
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store
+*.log
+*.tmp
+# Optional local exports
+/Builds/
+/LocalBackups/
+# Keep Build/: icons, packaging configuration and other source resources belong in Git
+
+# Local Python tooling environments
+Tools/.jellyvenv/
+Tools/**/.venv/
+
+# Independent tool repositories
+/Tools/substance-painter-mcp/
+/Tools/substance-painter-remote-mcp/

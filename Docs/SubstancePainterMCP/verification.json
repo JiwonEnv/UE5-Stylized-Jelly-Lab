@@ -1,0 +1,46 @@
+{
+  "server": {
+    "name": "Substance Painter MCP Server",
+    "title": null,
+    "version": "1.30.0",
+    "websiteUrl": null,
+    "icons": null
+  },
+  "tools": [
+    "create_project",
+    "open_project",
+    "save_project",
+    "import_texture",
+    "configure_and_bake",
+    "export_textures",
+    "execute_script",
+    "check_connection",
+    "get_project_info"
+  ],
+  "connection": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"connected\": true,\n  \"version\": {\n    \"api\": \"1.1.17\",\n    \"painter\": \"9.0.0\"\n  },\n  \"project_open\": false\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "project": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"project_open\": false,\n  \"texture_sets\": []\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}

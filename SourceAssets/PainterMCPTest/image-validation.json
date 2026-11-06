@@ -1,0 +1,100 @@
+[
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\ambient_occlusion.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 3,
+    "bytes": 3309
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\curvature.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 240,
+    "bytes": 86308
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\normal_base.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1777,
+    "bytes": 88110
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\position.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 14854,
+    "bytes": 88696
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\thickness.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 7,
+    "bytes": 76887
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\MeshMaps\\world_space_normals.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 13375,
+    "bytes": 143677
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\PBR\\test_low_MCPTest_BaseColor.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1,
+    "bytes": 1901
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\PBR\\test_low_MCPTest_Height.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1,
+    "bytes": 1322
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\PBR\\test_low_MCPTest_Metallic.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1,
+    "bytes": 355
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\PBR\\test_low_MCPTest_Normal.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1771,
+    "bytes": 88208
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\PBR\\test_low_MCPTest_Roughness.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1,
+    "bytes": 1323
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\UE5\\test_low_MCPTest_BaseColor.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 1,
+    "bytes": 1901
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\UE5\\test_low_MCPTest_Normal.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 2671,
+    "bytes": 180795
+  },
+  {
+    "file": "E:\\Project\\Unreal-Engine-5-Jelly-Game\\SourceAssets\\PainterMCPTest\\Textures\\UE5\\test_low_MCPTest_OcclusionRoughnessMetallic.png",
+    "width": 512,
+    "height": 512,
+    "sampled_unique_colors": 3,
+    "bytes": 4853
+  }
+]

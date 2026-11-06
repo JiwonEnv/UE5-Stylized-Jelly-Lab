@@ -1,0 +1,13 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"message\": \"내보내기가 완료되었습니다.\",\n  \"files\": [\n    \"E:\\\\Project\\\\Unreal-Engine-5-Jelly-Game\\\\SourceAssets\\\\PainterMCPTest\\\\Textures\\\\UE5/test_low_MCPTest_BaseColor.png\",\n    \"E:\\\\Project\\\\Unreal-Engine-5-Jelly-Game\\\\SourceAssets\\\\PainterMCPTest\\\\Textures\\\\UE5/test_low_MCPTest_OcclusionRoughnessMetallic.png\",\n    \"E:\\\\Project\\\\Unreal-Engine-5-Jelly-Game\\\\SourceAssets\\\\PainterMCPTest\\\\Textures\\\\UE5/test_low_MCPTest_Normal.png\"\n  ],\n  \"files_verified\": true\n}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

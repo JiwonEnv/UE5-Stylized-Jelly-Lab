@@ -1,0 +1,13 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"texture_set\": \"MCPTest\",\n  \"requested_maps\": {\n    \"Normal\": true,\n    \"World_space_normal\": true,\n    \"Ambient_occlusion\": true,\n    \"Curvature\": true,\n    \"Height\": false,\n    \"Position\": true,\n    \"Thickness\": true\n  },\n  \"busy\": false,\n  \"output_size\": 512,\n  \"status\": \"bake_finished\"\n}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}
