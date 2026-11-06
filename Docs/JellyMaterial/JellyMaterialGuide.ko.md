@@ -275,7 +275,7 @@ return res;
 > 반경이 크면(6 이상) 하이라이트·눈코까지 뭉개집니다. 4 가 균형점이었습니다.
 > 확인용으로 `Ignore Stencil = 1` 이면 화면 전체에 필터가 걸립니다.
 
-### 2-6. 인스턴스 프리셋 (`/Game/JellyGame/Art/Jelly/MI_Jelly_*`)
+### 2-6. 인스턴스 프리셋 (`/Game/JellyGame/Art/Materials/Jelly/Instances/MI_Jelly_*`)
 
 색 값은 Linear RGB 입니다.
 

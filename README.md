@@ -18,6 +18,11 @@ UE **5.8.4**의 Blueprint 기반 프로젝트를 생성했습니다. 표시 이�
 | --- | --- |
 | Config/ | Unreal 프로젝트 설정 |
 | Content/JellyGame/Art/ | 캐릭터, 환경, 머티리얼, 텍스처, VFX |
+| Content/JellyGame/Art/Characters/Jelly/ | 젤리 캐릭터 메시 (`SM_GummyBear`) |
+| Content/JellyGame/Art/Materials/Jelly/ | 젤리 마스터 머티리얼 `M_Jelly_Gummy`, `Instances/`에 `MI_Jelly_*` |
+| Content/JellyGame/Art/Materials/LookDev/ | 룩데브 전용 머티리얼 (바닥 등) |
+| Content/JellyGame/Art/Materials/PostProcess/ | 포스트 프로세스 머티리얼 (`M_PP_JellyPaintFilter`) |
+| Content/JellyGame/Art/Textures/Jelly/ | 젤리 텍스처 (`T_GummyBear_*`) |
 | Content/JellyGame/Blueprints/ | 캐릭터 및 공용 컴포넌트 |
 | Content/JellyGame/Core/ | GameMode, Controller 등 기반 시스템 |
 | Content/JellyGame/Gameplay/ | 상호작용과 게임 규칙 |
@@ -32,8 +37,8 @@ UE **5.8.4**의 Blueprint 기반 프로젝트를 생성했습니다. 표시 이�
 빈 폴더는 `.gitkeep`으로 유지합니다. 실제 파일이 생기면 해당 `.gitkeep`을 제거해도 됩니다. 에셋 이동·이름 변경은 Unreal Content Browser에서 수행하고 Redirector를 정리합니다.
 
 ## 시작 방법
-1. UE 5.8.4로 `JellyGame.uproject`를 엽니다. 시작 맵은 `Content/JellyGame/Maps/L_PainterMaterialTest`입니다.
-2. Painter 테스트 에셋은 `Content/JellyGame/Experiments/PainterPipeline`에 있습니다. `M_PainterTest`는 BaseColor, DirectX Normal, ORM(R=AO/G=Roughness/B=Metallic)을 연결합니다.
+1. UE 5.8.4로 `JellyGame.uproject`를 엽니다. 시작 맵은 `Content/JellyGame/Maps/L_JellyLookDev`입니다.
+2. 젤리 룩데브 에셋은 위 폴더 표의 `Art/` 하위 경로에 있으며 `Tools/BuildJellyLookDev.py`로 재생성합니다. 초기 Painter 실험 머티리얼은 정리되어 `Experiments/PainterPipeline`에는 `SM_PainterTest`만 남아 있습니다.
 3. Python Editor Script Plugin과 Editor Scripting Utilities를 활성화했습니다. 재현 도구는 `Tools/SetupPainterMaterialUE.py`, 검증 기록은 `Docs/SubstancePainterMCP/ue5-validation.json`입니다.
 4. [Painter → UE5 실습 글](Docs/SubstancePainterMCP/painter-to-ue5.ko.md)을 참고하고, [하이브리드 설계](Docs/JellySystem.md)에 따라 캐릭터 이동·점프와 젤리 변형을 추가합니다.
 

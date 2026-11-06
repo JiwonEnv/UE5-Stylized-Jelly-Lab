@@ -11,10 +11,15 @@ import unreal as u
 ROOT = Path(u.Paths.project_dir()).resolve()
 SRC = ROOT / 'SourceAssets' / 'Characters' / 'Jelly'
 TEX_SRC = SRC / 'Textures'
-DEST = '/Game/JellyGame/Art/Jelly'
+ART = '/Game/JellyGame/Art'
+MESH_DEST = f'{ART}/Characters/Jelly'
+TEX_DEST = f'{ART}/Textures/Jelly'
+DEST = f'{ART}/Materials/Jelly'  # master material
+MI_DEST = f'{DEST}/Instances'
+LOOKDEV_DEST = f'{ART}/Materials/LookDev'
+PP_DEST = f'{ART}/Materials/PostProcess'
 MAT_NAME = 'M_Jelly_Gummy'
 LEVEL = '/Game/JellyGame/Maps/L_JellyLookDev'
-BASE_LEVEL = '/Game/JellyGame/Maps/L_PainterMaterialTest'
 
 tools = u.AssetToolsHelpers.get_asset_tools()
 lib = u.MaterialEditingLibrary
@@ -65,7 +70,7 @@ def import_textures():
             log('missing texture, using fallback:', f)
             out[suffix] = None
             continue
-        t = import_file(f, 'T_GummyBear_' + suffix)
+        t = import_file(f, 'T_GummyBear_' + suffix, TEX_DEST)
         t.set_editor_property('srgb', srgb)
         t.set_editor_property('compression_settings', comp)
         eal.save_loaded_asset(t)
@@ -74,12 +79,12 @@ def import_textures():
 
 
 def import_mesh():
-    mesh = eal.load_asset(f'{DEST}/SM_GummyBear')
+    mesh = eal.load_asset(f'{MESH_DEST}/SM_GummyBear')
     if mesh:
         return disable_nanite(mesh)
-    mesh = import_file(SRC / 'SM_GummyBear.obj', 'SM_GummyBear')
+    mesh = import_file(SRC / 'SM_GummyBear.obj', 'SM_GummyBear', MESH_DEST)
     if not isinstance(mesh, u.StaticMesh):
-        mesh = next((eal.load_asset(p) for p in eal.list_assets(DEST, False)
+        mesh = next((eal.load_asset(p) for p in eal.list_assets(MESH_DEST, False)
                      if isinstance(eal.load_asset(p), u.StaticMesh)), None)
     return disable_nanite(mesh)
 
@@ -563,8 +568,8 @@ EXTRA = {
 def build_instances(parent):
     out = {}
     for name, (c, d, gc, dens, o_thin, o_thick) in PRESETS.items():
-        path = f'{DEST}/MI_Jelly_{name}'
-        mi = eal.load_asset(path) or tools.create_asset(f'MI_Jelly_{name}', DEST, u.MaterialInstanceConstant, u.MaterialInstanceConstantFactoryNew())
+        path = f'{MI_DEST}/MI_Jelly_{name}'
+        mi = eal.load_asset(path) or tools.create_asset(f'MI_Jelly_{name}', MI_DEST, u.MaterialInstanceConstant, u.MaterialInstanceConstantFactoryNew())
         lib.set_material_instance_parent(mi, parent)
         lib.clear_all_material_instance_parameters(mi)  # drop stale overrides (e.g. from manual tweaking)
         for pn, col in (('Jelly Color', c), ('Deep Color', d), ('Inner Glow Color', gc)):
@@ -593,14 +598,11 @@ def build_level(mesh, mis):
         if eal.does_asset_exist(LEVEL):
             les.load_level(LEVEL)
         else:
+            # The old base map (L_PainterMaterialTest) was removed; start from an empty level.
             # Never duplicate_asset + load_level a map in one session: the duplicated UWorld stays
             # referenced and the editor hits a fatal "World Memory Leaks" on map load.
-            if current != BASE_LEVEL:
-                les.load_level(BASE_LEVEL)
-            world = u.get_editor_subsystem(u.UnrealEditorSubsystem).get_editor_world()
-            if not u.EditorLoadingAndSavingUtils.save_map(world, LEVEL):
-                raise RuntimeError('could not save look-dev level')
-            les.load_level(LEVEL)
+            if not les.new_level(LEVEL):
+                raise RuntimeError('could not create look-dev level')
     for a in acts.get_all_level_actors():
         if a.get_actor_label().startswith('Jelly_') or isinstance(a, u.StaticMeshActor) and a.get_actor_label().startswith('Painter'):
             acts.destroy_actor(a)
@@ -679,7 +681,7 @@ return res;
 
 def build_paint_filter():
     name = 'M_PP_JellyPaintFilter'
-    m = eal.load_asset(f'{DEST}/{name}') or tools.create_asset(name, DEST, u.Material, u.MaterialFactoryNew())
+    m = eal.load_asset(f'{PP_DEST}/{name}') or tools.create_asset(name, PP_DEST, u.Material, u.MaterialFactoryNew())
     for e in list(lib.get_material_expressions(m)):
         lib.delete_material_expression(m, e)
     m.set_editor_property('material_domain', u.MaterialDomain.MD_POST_PROCESS)
@@ -719,7 +721,7 @@ def build_paint_filter():
 
 def build_floor_material():
     name = 'M_LookDev_Floor'
-    m = eal.load_asset(f'{DEST}/{name}') or tools.create_asset(name, DEST, u.Material, u.MaterialFactoryNew())
+    m = eal.load_asset(f'{LOOKDEV_DEST}/{name}') or tools.create_asset(name, LOOKDEV_DEST, u.Material, u.MaterialFactoryNew())
     lib.delete_all_material_expressions(m)
     g = G(m)
     g.out(g.color('Floor Color', (0.62, 0.61, 0.64), -400, 0, 'Floor'), '', MP.MP_BASE_COLOR)
