@@ -1,55 +1,92 @@
-# UE5-Stylized-Jelly-Lab
+<p align="center">
+  <img src="Docs/wiki/images/banner.jpg" alt="UE5 Stylized Jelly Lab" width="100%">
+</p>
 
-Unreal Engine 5 기반 스타일라이즈드 젤리 아트 연구. 젤리 머티리얼, 셰이딩, 말랑한 변형 표현과 Substance Painter 연동 파이프라인 실험.
+<p align="center">
+  <img src="https://img.shields.io/badge/Unreal%20Engine-5.8.4-0E1128?logo=unrealengine&logoColor=white" alt="Unreal Engine 5.8.4">
+  <img src="https://img.shields.io/badge/Substance%203D%20Painter-12.2-E3392C" alt="Substance 3D Painter 12.2">
+  <img src="https://img.shields.io/badge/Material%20Graph-Thin%20Translucent-8A4FFF" alt="Material Graph">
+  <img src="https://img.shields.io/badge/Python-Editor%20Automation-3776AB?logo=python&logoColor=white" alt="Python">
+  <a href="https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki"><img src="https://img.shields.io/badge/📖%20Wiki-가이드%20보기-2EA44F" alt="Wiki"></a>
+</p>
 
-## 현재 상태
-UE **5.8.4**의 Blueprint 기반 프로젝트를 생성했습니다. 표시 이름은 **Jelly Game**, 프로젝트 파일은 `JellyGame.uproject`입니다. Painter에서 베이킹한 메시·텍스처를 가져와 PBR 머티리얼을 연결한 테스트 레벨까지 구성했습니다. 캐릭터 이동·젤리 변형·게임플레이는 아직 구현하지 않았습니다.
+# 🍬 UE5 Stylized Jelly Lab
 
-저장소 이름은 `UE5-Stylized-Jelly-Lab`이며, 로컬 폴더 이름은 `Unreal-Engine-5-Jelly-Game`입니다. `JellyGame`은 Unreal 프로젝트 파일 이름 및 콘텐츠 네임스페이스입니다.
+Unreal Engine 5 기반 **스타일라이즈드 젤리 아트 연구**.
+젤리 머티리얼과 셰이딩, 말랑한 변형 표현, Substance Painter 연동 파이프라인을 실험합니다.
 
-## 개발 방향
-- Blueprint 우선, 성능 측정이나 기능 요구로 필요해질 때 C++ 도입
-- WPO: 대기·이동 중 미세한 출렁임과 표면 표현
-- 충돌 이벤트 + 스프링: 점프·착지·벽 충돌 시 메시 또는 본의 스쿼시·스트레치
-- 초기 충돌 판정은 안정적인 캡슐을 유지하고 시각적 메시를 변형
+---
 
-## 폴더
-| 경로 | 용도 |
-| --- | --- |
-| Config/ | Unreal 프로젝트 설정 |
-| Content/JellyGame/Art/ | 캐릭터, 환경, 머티리얼, 텍스처, VFX |
-| Content/JellyGame/Art/Characters/Jelly/ | 젤리 캐릭터 메시 (`SM_GummyBear`) |
-| Content/JellyGame/Art/Materials/Jelly/ | 젤리 마스터 머티리얼 `M_Jelly_Gummy`, `Instances/`에 `MI_Jelly_*` |
-| Content/JellyGame/Art/Materials/LookDev/ | 룩데브 전용 머티리얼 (바닥 등) |
-| Content/JellyGame/Art/Materials/PostProcess/ | 포스트 프로세스 머티리얼 (`M_PP_JellyPaintFilter`) |
-| Content/JellyGame/Art/Textures/Jelly/ | 젤리 텍스처 (`T_GummyBear_*`) |
-| Content/JellyGame/Blueprints/ | 캐릭터 및 공용 컴포넌트 |
-| Content/JellyGame/Core/ | GameMode, Controller 등 기반 시스템 |
-| Content/JellyGame/Gameplay/ | 상호작용과 게임 규칙 |
-| Content/JellyGame/Physics/ | 변형 프로필 등 물리 반응 에셋 |
-| Content/JellyGame/Maps/ | 게임 및 테스트 레벨 |
-| Content/JellyGame/Experiments/ | 검증 전 실험 |
-| Content/JellyGame/UI/ | 위젯 및 UI 에셋 |
-| SourceAssets/ | Blender·PSD 등 원본 제작 파일 |
-| Source/ | 향후 C++ 도입 시 사용; 현재 빈 자리 |
-| Docs/ | 설계와 개발 규칙 |
+## 🎨 Gallery — 발전한 순서
 
-빈 폴더는 `.gitkeep`으로 유지합니다. 실제 파일이 생기면 해당 `.gitkeep`을 제거해도 됩니다. 에셋 이동·이름 변경은 Unreal Content Browser에서 수행하고 Redirector를 정리합니다.
+| ① 단색 | ② 두께 | ③ 투과 | ④ 다색 빛 |
+|:---:|:---:|:---:|:---:|
+| ![](Docs/wiki/images/evo1_flat.jpg) | ![](Docs/wiki/images/evo2_thickness.jpg) | ![](Docs/wiki/images/evo3_thin_translucent.jpg) | ![](Docs/wiki/images/evo4_iridescent.jpg) |
+| **⑤ 그림체** | **⑥ 붓질 + 유화** | **⑦ 통합** | **⑧ 속 글리터 (최신)** |
+| ![](Docs/wiki/images/evo5_painted.jpg) | ![](Docs/wiki/images/evo6_brush.jpg) | ![](Docs/wiki/images/evo7_combined.jpg) | ![](Docs/wiki/images/evo8_inner_glitter.jpg) |
 
-## 시작 방법
-1. UE 5.8.4로 `JellyGame.uproject`를 엽니다. 시작 맵은 `Content/JellyGame/Maps/L_JellyLookDev`입니다.
-2. 젤리 룩데브 에셋은 위 폴더 표의 `Art/` 하위 경로에 있으며 `Tools/BuildJellyLookDev.py`로 재생성합니다. 초기 Painter 실험 머티리얼은 정리되어 `Experiments/PainterPipeline`에는 `SM_PainterTest`만 남아 있습니다.
-3. Python Editor Script Plugin과 Editor Scripting Utilities를 활성화했습니다. 재현 도구는 `Tools/SetupPainterMaterialUE.py`, 검증 기록은 `Docs/SubstancePainterMCP/ue5-validation.json`입니다.
-4. [Painter → UE5 실습 글](Docs/SubstancePainterMCP/painter-to-ue5.ko.md)을 참고하고, [하이브리드 설계](Docs/JellySystem.md)에 따라 캐릭터 이동·점프와 젤리 변형을 추가합니다.
+모두 같은 마스터 머티리얼에서 **슬라이더 값만 바꾼** 결과입니다 → [갤러리 자세히](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/01-젤리-갤러리)
 
-## Git 및 LFS
-Unreal 패키지와 주요 바이너리 아트 에셋은 `.gitattributes`의 Git LFS 규칙으로 관리합니다.
+---
 
-첫 커밋 전 `git status`, `git check-ignore`, `git check-attr filter -- <asset-path>`, `git lfs ls-files`로 추적 대상을 확인합니다. LFS 원격 지원과 용량을 확인하고, 공동 편집하는 Unreal 패키지는 서버가 지원할 때 잠금을 사용합니다. 기존 바이너리 이력이 생긴 뒤 LFS로 옮기는 이력 재작성은 별도 검토합니다.
+## 🧪 Material Features
 
-[에셋 네이밍](Docs/AssetNaming.md) · [커밋 및 협업 규칙](Docs/CommitConvention.md)
+| 효과 | 설명 |
+|---|---|
+| 💧 두께 흡수색 | 얇은 곳은 밝고 투명, 두꺼운 곳은 진하고 탁하게 (Painter 두께 맵) |
+| 🪟 투과 | **Thin Translucent** — 뒤 배경이 젤리 색으로 물들어 비침 |
+| ✨ 스튜디오 하이라이트 | 반사 방향으로 그린 크고 또렷한 흰 반사 + 속에서 빛나는 느낌 |
+| 🌈 다색 빛 | 몸통 안쪽 3색 그라데이션 · 좌우 2색 림 라이트 · 무지개빛(박막) |
+| 🖌 그림체 | 계단 음영 · 셀 3톤 · 붓 자국 단위 색 면 · 흰 대시 하이라이트 · 외곽 톤 |
+| 🎞 유화 필터 | Kuwahara 포스트 프로세스 (HLSL Custom 노드), 커스텀 스텐실로 젤리에만 |
+| ⭐ 반짝이 | 4각·6각 별 스프라이트 · 유리 테두리 선 · 젤리 속 글리터(머티리얼 함수) |
+| 🎮 게임용 경량판 | 노드 20개 · 파라미터 9개 `M_Jelly_Gummy_Gameplay` |
 
-## 개발 순서
-젤리 머티리얼 → 기본 캐릭터 이동·점프 → WPO → 충돌 기반 스프링 변형 → 게임플레이 프로토타입.
+---
 
-라이선스는 미정입니다. 외부 에셋의 출처와 사용 조건은 `Docs/ThirdPartyAssets.md`에 기록합니다.
+## ⚡ Pipeline
+
+```mermaid
+flowchart LR
+    A[메시 FBX] --> B[Substance Painter<br/>두께·얼룩·붓 결]
+    B --> C[텍스처 4장<br/>BaseColor·Normal·Mask·Paint]
+    C --> D[M_Jelly_Gummy<br/>머티리얼 그래프]
+    D --> E[MI_Jelly_*<br/>슬라이더 프리셋]
+    E --> F[M_PP_JellyPaintFilter<br/>그림체일 때]
+```
+
+| 단계 | 하는 일 | 도구 |
+|---|---|---|
+| 🖌 Texture | 두께·색 얼룩·기포·붓 결을 채널별로 그림 | Substance 3D Painter |
+| 🧪 Shade | 노드 그래프로 젤리 계산 (Shader Graph 와 같은 방식) | Unreal Material Editor |
+| 🎚 Tune | 인스턴스 슬라이더로 색·느낌 조절 | Material Instance |
+| 🤖 Automate | 메시·두께·붓 자국·별 텍스처 생성, 에디터 빌드·촬영 | Python (UE Remote Execution, Painter Remote Scripting) |
+
+---
+
+## 📖 Docs
+
+| | 페이지 | 내용 |
+|:---:|---|---|
+| 🏠 | [Wiki Home](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki) | 처음이라면 여기부터 |
+| 🚀 | [바로 써보기](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/02-바로-써보기) | 내 메시에 젤리 입히기 (원리 몰라도 OK) |
+| 🎚 | [슬라이더 사전](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/03-슬라이더-사전) | 슬라이더별 비교 이미지와 추천값 |
+| 🧪 | [어떻게 만들어졌나](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/04-어떻게-만들어졌나) | 젤리 4층 원리 · 노드 5가지 |
+| 🖌 | [Painter 텍스처 만들기](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/05-Painter-텍스처-만들기) | 레이어 12개 · 내보내기 |
+| 🩹 | [문제 해결](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/06-문제-해결) | 증상별 원인과 해결 |
+| 📓 | [노드 셰이더 기록](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/07-노드-셰이더-기록) | 유니티 Shader Graph 대응표 · 시행착오 |
+| 🗓 | [변경 이력](https://github.com/JiwonEnv/UE5-Stylized-Jelly-Lab/wiki/08-변경-이력) | v0 → v11 |
+
+수식·노드·HLSL 전체: [JellyMaterialGuide.ko.md](Docs/JellyMaterial/JellyMaterialGuide.ko.md)
+
+---
+
+## 🛠 Tech Stack
+
+| 분야 | 사용 |
+|---|---|
+| 🎮 Engine | Unreal Engine 5.8.4 |
+| 🧪 Shading | Material Editor · Material Function · Material Instance · Post Process Material · Custom HLSL · Custom Depth-Stencil |
+| 🖌 Texture | Substance 3D Painter 12.2 (Fill/Mask/Generator 레이어, User 채널 패킹) |
+| 🤖 Automation | Python — UE Python Remote Execution, Painter Remote Scripting, numpy 절차 텍스처 |
+| 🌐 Workflow | Git · Git LFS · GitHub Wiki |

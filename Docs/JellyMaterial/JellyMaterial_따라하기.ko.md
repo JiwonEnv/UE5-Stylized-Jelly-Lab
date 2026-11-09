@@ -97,7 +97,7 @@
 | 2 | Color Clouds Cool | BaseColor `#CCC7F2` | 55 | Clouds 2 · Tri-planar | 은은한 라벤더 얼룩 (레퍼런스의 보랏빛 기운) |
 | 3 | Color Clouds Warm | BaseColor `#FFE0CC` | 45 | Clouds 3 · Tri-planar | 은은한 살구 얼룩 |
 | 4 | Thickness | User2 = **베이크한 Thickness 맵** (User2 소스 칸 클릭 → 리소스 검색에 `thickness` → 베이크된 맵 선택)* | 100 | – | 두께를 User2 칸에 복사 |
-| 5 | Cavity Density | BaseColor `#B8ADB8` | 60 | Curvature 제너레이터 (오목한 곳) | 홈 부분이 진해 보이게 |
+| 5 | Cavity Density | BaseColor `#B8ADB8` | 60 | 베이크한 Curvature 맵 + 그 위에 **Levels (Invert, 입력 0.5~0.67)** ※ | 홈 부분이 진해 보이게 |
 | 6 | Soft Lumps | Height 0.35 | 35 | 3D Perlin Noise Fractal | 손으로 만든 듯한 살짝 울퉁불퉁 |
 | 7 | Drips | Height 0.6, Roughness 0.02 | 80 | Grunge Rusty Leaks · Tri-planar + 그 위에 Position 제너레이터(Multiply) | 위에서 흘러내린 자국 |
 | 8 | Micro Ripples | Height 0.15 | 25 | Liquid · Tri-planar | 아주 잔잔한 물결 |
@@ -107,6 +107,10 @@
 | 12 | Paint Dabs | User5 1 | 100 | Grunge Plaster Painted · Tri-planar | 물감 덩어리 (그림체용) |
 
 > \* 리소스 창에 베이크된 Thickness 가 안 보이면: User2 = 1 로 두고 **black mask → Add generator → Mask Editor** 를 넣은 뒤, Mask Editor 에서 Thickness 가중치만 올리고 나머지(Curvature/AO 등)는 0 으로 하면 같은 결과가 됩니다.
+>
+> ※ Curvature 맵은 **회색(0.5)이 평평, 밝으면 볼록, 어두우면 오목**인 맵이라 그대로 넣으면 전체가 회색 = 마스크가 50% 로 다 칠해집니다.
+> 마스크 안 fill 위에 **Add levels** → **Invert** 체크 → 입력 범위 **0.5 ~ 0.67** 로 두면 "오목한 곳만 흰색, 나머지 검정" 이 됩니다.
+> (테스트 곰의 `GummyBear_Cavity.png` 는 이 계산 `(0.5 − curvature) × 3` 을 미리 해 둔 맵입니다.)
 >
 > **왜 Tri-planar?** 자동 언래핑된 메시는 UV 조각이 많아서, 보통 방식으로 노이즈를 깔면 조각 경계에 이음새가 보입니다. Tri-planar 는 UV 대신 3D 공간 기준으로 깔아서 이음새가 없고, 흘러내린 자국도 항상 아래로 향합니다.
 >
@@ -167,6 +171,11 @@
 | 손그림 파스텔 | `MI_Jelly_PinkPainted` |
 | 손그림 + 6각 별 | `MI_Jelly_AmberPainted` |
 | 손그림 + 여러 색 빛 + 별 | `MI_Jelly_RedPainted` |
+| 손그림 + 여러 색 빛 + **젤리 속 글리터** (최신) | `MI_Jelly_RedPainted_InnerGlitter_TexParam` |
+
+> `MI_Jelly_RedPainted_InnerGlitter_Restored` 는 텍스처가 머티리얼 안에 고정돼 있어 인스턴스에서 못 바꿉니다.
+> 같은 룩에 텍스처 칸만 연 복사본이 `…_TexParam` 입니다 (부모 `M_Jelly_Gummy_RedPainted_InnerGlitter_TexParam`). 내 메시에 쓸 땐 이쪽을 복사하세요.
+> 이 버전은 텍스처 칸이 5개: 아래 4칸 + `Brush Strokes`(붓 자국 타일, 보통 그대로 둠). 별 텍스처는 글리터 함수 안에 고정입니다.
 
 1. 프리셋 우클릭 → **Duplicate** → 이름 바꾸기 (예: `MI_Gummy_MyRed`)
 2. 열어서 **Textures** 그룹의 4칸을 내 텍스처로 교체:

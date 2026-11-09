@@ -11,7 +11,7 @@ for b in bears:
     for i, k in enumerate('xyz'):
         mn[i] = min(mn[i], getattr(o, k) - getattr(e, k)); mx[i] = max(mx[i], getattr(o, k) + getattr(e, k))
 c = u.Vector(*[(a + b) / 2 for a, b in zip(mn, mx)])
-dist = max(mx[1] - mn[1], 50) * (0.85 if len(bears) > 1 else 2.2)
+dist = max(mx[1] - mn[1], 50) * (0.85 if len(bears) > 1 else 2.2) * float(P.get('dist', 1.0))
 cam = u.Vector(c.x + SIDE * dist, c.y, c.z + dist * 0.18)
 ues.set_level_viewport_camera_info(cam, u.MathLibrary.find_look_at_rotation(cam, u.Vector(c.x, c.y, c.z - 4)))
 # key light from camera side, high and to the left
